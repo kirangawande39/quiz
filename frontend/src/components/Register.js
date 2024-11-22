@@ -21,10 +21,10 @@ const Register = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:5001/register', {
+            const response = await axios.post('https://quizapp-htgv.onrender.com/register', {
                 username,
                 email,
-                password
+                password,
             });
 
             if (response.data.message === 'User registered successfully') {
