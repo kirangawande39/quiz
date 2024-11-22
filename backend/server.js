@@ -9,8 +9,8 @@ const PORT = 5001;
 
 app.use(cors());
 app.use(express.json());
-
-mongoose.connect('mongodb://localhost:27017/registration', {
+// local db url =mongodb://localhost:27017/registration
+mongoose.connect('mongodb+srv://kirangawande9307:ELS0tXEWEAyadQys@cluster0.glrbp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => console.log('Connected to MongoDB'))
