@@ -3,18 +3,21 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const User = require('./models/User'); // Correct the path here, should match your folder structure
-
 const app = express();
 const PORT = 5001;
+require('dotenv').config();
 
 app.use(cors());
 app.use(express.json());
 // local db url =mongodb://localhost:27017/registration
-mongoose.connect('mongodb+srv://kirangawande9307:ELS0tXEWEAyadQys@cluster0.glrbp.mongodb.net/?retryWrites=true', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+
+
+mongoose.connect(process.env.MONGO_URI, {
+    retryWrites: true,
+    w: 'majority',
 }).then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.log('Failed to connect to MongoDB', err));
+
 
 app.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
