@@ -114,10 +114,10 @@ const Quiz = () => {
                                     ))}
                                 </tbody>
                             </Table>
-                        </div>
-
                         <Button variant="primary" href="/" className="mt-3">Go Home</Button>
                         <StudentResultPDF userAnswers={userAnswers} score={score} totalQuestions={questions.length} />
+                        </div>
+
                     </Card.Body>
                 </Card>
             </Container>
