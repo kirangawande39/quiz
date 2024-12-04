@@ -88,28 +88,34 @@ const Quiz = () => {
                     <Card.Body>
                         <h2 className="text-center text-success">Quiz Completed!</h2>
                         <p className="text-center">Your Score: <strong>{score}/{questions.length}</strong></p>
-                        <Table striped bordered hover className="mt-4 result-table">
-                            <thead className="bg-info text-white">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Question</th>
-                                    <th>Your Answer</th>
-                                    <th>Correct Answer</th>
-                                    <th>Result</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {userAnswers.map((item, index) => (
-                                    <tr key={index} className={item.isCorrect ? 'table-success' : 'table-danger'}>
-                                        <td>{index + 1}</td>
-                                        <td>{item.question}</td>
-                                        <td>{item.answer}</td>
-                                        <td>{item.correctAnswer}</td>
-                                        <td>{item.isCorrect ? 'Correct' : 'Incorrect'}</td>
+                        <div className="table-responsive">
+                            <Table striped bordered hover className="mt-4 result-table">
+                                <thead className="bg-info text-white">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Question</th>
+                                        <th>Your Answer</th>
+                                        <th>Correct Answer</th>
+                                        <th>Result</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </Table>
+                                </thead>
+                                <tbody>
+                                    {userAnswers.map((item, index) => (
+                                        <tr
+                                            key={index}
+                                            className={item.isCorrect ? 'table-success' : 'table-danger'}
+                                        >
+                                            <td>{index + 1}</td>
+                                            <td>{item.question}</td>
+                                            <td>{item.answer}</td>
+                                            <td>{item.correctAnswer}</td>
+                                            <td>{item.isCorrect ? 'Correct' : 'Incorrect'}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </Table>
+                        </div>
+
                         <Button variant="primary" href="/" className="mt-3">Go Home</Button>
                         <StudentResultPDF userAnswers={userAnswers} score={score} totalQuestions={questions.length} />
                     </Card.Body>
